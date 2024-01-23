@@ -1,0 +1,245 @@
+
+{% extends '_base.html' %}
+{% load static %}
+<!--passes the page title-->
+{% block title %}{{page_title}}{% endblock title %}
+<!--content starts-->
+{% block content %}
+
+        
+
+    
+
+    <style>
+       .overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                justify-content: center;
+                align-items: center;
+                z-index: 1;
+            }
+    
+            /* Styles for the popup box */
+            .popup {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+                max-width: 400px;
+                text-align: center;
+                /* margin-left: 8%; */
+            }
+    
+            /* Close button style */
+            .close-btn {
+                cursor: pointer;
+                color: #333;
+                font-weight: bold;
+                margin-top: 10px;
+            }
+      .collapsible {
+        background-color: #dbc900;
+        color: rgb(79, 79, 79);
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: center;
+        outline: none;
+        font-size: 15px;
+      }
+      
+      .active, .collapsible:hover {
+        background-color: #555;
+      }
+      
+      .content {
+        padding: 0 18px;
+        display: none;
+        overflow: hidden;
+        background-color: #f7fb04;
+      }
+      button{
+        padding: 1px;
+        color: #373838;
+        background-color: rgba(213, 250, 250, 0.596);;
+        border: #0387c0;
+        font-size: xx-large;
+        cursor: pointer;
+      }
+      
+      </style>
+      </head>
+      <body >
+      
+        <section class="section" style="background-image: url('https://static.vecteezy.com/system/resources/previews/002/272/663/non_2x/blue-mint-watercolor-brush-paint-background-vector.jpg');
+        background-size: cover;
+        background-repeat: no-repeat; 
+        
+        color: #fff; 
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;">
+          <div class="container">
+            <p class="title" style="font-size:500%;width: 50%;line-height: 140%;margin-top: 4%;"> One - Step solution  to <span style="color: #0387c0;">DYSOPHONIA</span></p>
+            <p class="subtitle" style="font-size: x-large;margin-top: 5%;width: 30%;line-height: 150%;">Test yourself for dysphonia by clicking on the <strong style="color: #0387c0;font-size: larger;">Button</strong> aside!</p>
+            <a style="background-color: #0387c0;
+            border: none;
+            color: white;
+            padding: 150px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 100px;
+            margin: 4px 2px;
+            border-radius: 50%;
+            position: absolute;
+            right: 5%;
+            top: 10%;" href="{% url 'core:record' %}">🎙️</a>
+        </section>
+
+        
+
+        
+
+        
+      
+        <div style="text-align: center;justify-content: center; background-color: rgba(213, 250, 250, 0.596);">
+          <p style="font-size: 50px;padding-top: 6%;">What is <strong style="color: #0387c0;">DYSOPHONIA? </strong><button onclick="showPopup()">💡</button>
+    
+            <!-- Overlay and Pop-up Content -->
+            <div id="overlay" class="overlay">
+                <div class="popup">
+                    <p><br><strong>DID YOU KNOW?</strong><br><br>Smoking is known to harm the vocal cords and can worsen dysphonia, quitting smoking is generally recommended for overall health. <br><br></p>
+                    <span class="close-btn" onclick="closePopup()">Close</span>
+                </div>
+            </div></p> <br> <br>
+          <!-- <p style="font-size: 50px;padding-top: 6%;">HERE FOR THE FIRST TIME ?</p> -->
+          <p style="font-size: x-large;width: 70%;text-align: center;justify-content: center;margin-left: 15%;margin-top: 3%;padding-bottom: 5%;">A voice disorder characterized by abnormalities in pitch, volume or quality.
+            Seeking timely advice from healthcare professionals is crucial for effective management and improved vocal outcomes. Dysphonia refers to a disorder of the voice that affects the quality, pitch, or volume of a person's vocal sounds. It can manifest as hoarseness, breathiness, roughness, or difficulty in controlling the pitch or loudness of the voice. </p></div>
+
+            <div style="text-align: center;justify-content: left; background-color: rgba(213, 250, 250, 0.596);">
+              <p style="font-size: 50px;padding-top: 6%;">What are the causes of <strong style="color: #0387c0;">DYSOPHONIA? </strong><button onclick="showPopup1()">💡</button>
+    
+                <!-- Overlay and Pop-up Content -->
+                <div id="overlay1" class="overlay" >
+                    <div class="popup">
+                        <p><br><strong>DID YOU KNOW?</strong><br><br>Strained voice, stress and vocal misuse are the key factors behind dysphonia's hushed melody. <br><br></p>
+                        <span class="close-btn" onclick="closePopup1()">Close</span>
+                    </div>
+                </div></p>
+              <p style="font-size: x-large;width: 70%;text-align: left;justify-content: left;margin-left: 15%;margin-top: 3%;padding-bottom: 5%;"><br> <br>
+
+                <strong style="color: #3b3c3c;">Vocal Abuse or Misuse: </strong><br> <br>
+                
+                Description: Excessive or improper use of the voice, such as yelling, screaming, or speaking in an unnatural pitch, can lead to strain on the vocal folds. <br>
+                Consequence: Vocal abuse can cause trauma to the vocal folds, resulting in conditions like nodules, polyps, or vocal cord hemorrhage. <br> <br>
+                <strong style="color: #3b3c3c;">Infections and Inflammation: </strong><br> <br>
+                
+                Description: Infections of the respiratory tract, such as laryngitis, can cause inflammation of the vocal folds, affecting their ability to vibrate properly. <br>
+                Consequence: Inflammation can lead to changes in voice quality, including hoarseness or breathiness. <br> <br>
+                <strong style="color: #3b3c3c;">Gastroesophageal Reflux Disease (GERD): </strong><br> <br>
+                
+                Description: GERD causes stomach acid to flow back into the esophagus, potentially reaching the throat and larynx, leading to irritation. <br>
+                Consequence: Acid reflux can cause inflammation of the vocal folds, contributing to dysphonia. <br> <br>
+                <strong style="color: #3b3c3c;">Neurological Conditions: </strong><br> <br>
+                
+                Description: Conditions affecting the nerves controlling the vocal folds, such as Parkinson's disease or spasmodic dysphonia, can result in dysphonia. <br>
+                Consequence: Impaired nerve function can lead to changes in vocal fold movement and coordination. <br> <br>
+                 <strong style="color: #3b3c3c;">Vocal Fold Paralysis:</strong><br> <br>
+                
+                Description: Paralysis of one or both vocal folds can result from trauma, surgery, tumors, or neurological conditions. <br>
+                Consequence: Paralysis affects the proper movement of the vocal folds, impacting voice production. <br> <br>
+                 <strong style="color: #3b3c3c;">Psychological Factors:</strong><br> <br>
+                
+                Description: Emotional stress, anxiety, or psychological trauma can contribute to psychogenic dysphonia. <br>
+                Consequence: Psychological factors may manifest as tension or changes in the coordination of vocal muscles, affecting voice quality. <br> <br> </p>
+                <p style="font-size: 50px;padding-top: 6%;">What are the preventive measures for <strong style="color: #0387c0;">DYSOPHONIA? </strong><button onclick="showPopup2()"> 💡</button>
+    
+                  <!-- Overlay and Pop-up Content -->
+                  <div id="overlay2" class="overlay">
+                      <div class="popup">
+                          <p><br><strong>DID YOU KNOW?</strong><br><br>Pitch Perfect Posture! Good posture helps align your breathing, supporting healthy vocal production. <br><br></p>
+                          <span class="close-btn" onclick="closePopup2()">Close</span>
+                      </div>
+                  </div></p> <br> <br>
+                <p style="font-size: x-large;width: 70%;text-align: left;justify-content: left;margin-left: 15%;margin-top: 3%;padding-bottom: 5%;"><br> <br>
+
+                  <strong style="color: #3b3c3c;">Maintain hydration: </strong><br> <br>
+                  
+                  Stay well-hydrated to keep the vocal cords lubricated. Drink plenty of water throughout the day, especially in dry or arid environments.
+ <br> <br>
+                  <strong style="color: #3b3c3c;">Avoid vocal abuse: </strong><br> <br>
+                  
+                  Be mindful of your voice use, and avoid excessive shouting, yelling, or speaking loudly for prolonged periods. Use amplification (microphones) when speaking to large groups.
+ <br> <br>
+                  <strong style="color: #3b3c3c;">Take breaks: </strong><br> <br>
+                  
+                  If your profession or activities involve prolonged speaking or singing, take regular breaks to allow your vocal cords to rest.
+<br>
+                  <br> <br>
+                  <strong style="color: #3b3c3c;">Practice good vocal hygiene: </strong><br> <br>
+                  
+                  Avoid clearing your throat frequently, as it can cause irritation. Instead, sip water to help soothe the throat.
+Use proper speaking techniques, such as speaking at a moderate volume and pitch.
+ <br> <br>
+                   <strong style="color: #3b3c3c;">Limit caffine & alcohol intake:</strong><br> <br>
+                  
+                   Caffeine and alcohol can contribute to dehydration, which may affect the vocal cords. Limit your intake and balance with water consumption.
+                   
+                   <br> <br>
+                   <strong style="color: #3b3c3c;">Manage reflux:</strong><br> <br>
+                  
+                   If you have gastroesophageal reflux disease (GERD), manage it through dietary changes, lifestyle modifications, and medications to prevent stomach acid from affecting the vocal cords.
+                   <br> <br></p>
+                </div>
+                
+      
+      <script>
+        
+            function showPopup() {
+                document.getElementById('overlay').style.display = 'flex';
+            }
+            function showPopup1() {
+                document.getElementById('overlay1').style.display = 'flex';
+            }
+            function showPopup2() {
+                document.getElementById('overlay2').style.display = 'flex';
+            }
+            function closePopup() {
+                document.getElementById('overlay').style.display = 'none';
+            }
+            function closePopup1() {
+                document.getElementById('overlay1').style.display = 'none';
+            }
+            function closePopup2() {
+                document.getElementById('overlay2').style.display = 'none';
+            }
+        
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+      
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      }
+      </script>
+      
+      </body>
+      </html>
+  </div>
+
+{% endblock content %}
